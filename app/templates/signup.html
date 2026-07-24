@@ -1,0 +1,18 @@
+{% extends "base_public.html" %}
+{% block title %}Sign up — FormVerse{% endblock %}
+{% block body %}
+<div class="auth-wrap">
+  <div class="auth-card">
+    <a href="/" class="brand" style="justify-content:center;"><span class="brand-mark"></span>FormVerse</a>
+    <div class="auth-sub">Create your free workspace</div>
+    {% if error %}<div class="err-banner" style="display:block;">{{ error }}</div>{% endif %}
+    <form method="post" action="/signup">
+      <div class="field"><label>Full name</label><input type="text" name="name" placeholder="Jordan Blake" value="{{ name or '' }}" required></div>
+      <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@company.com" value="{{ email or '' }}" required></div>
+      <div class="field"><label>Password <span class="hint">— min 8 characters</span></label><input type="password" name="password" placeholder="••••••••" required minlength="8"></div>
+      <button class="btn btn-primary btn-block" type="submit" style="margin-top:6px;">Create account</button>
+    </form>
+    <div class="auth-foot">Already have an account? <a href="/login">Log in</a></div>
+  </div>
+</div>
+{% endblock %}

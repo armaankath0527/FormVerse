@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem('formverse-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}FormVerse{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+{% block head %}{% endblock %}
+</head>
+<body>
+<div class="app-shell active">
+  <aside class="sidebar">
+    <a href="/app/dashboard" class="brand" style="margin-bottom:6px;"><span class="brand-mark"></span>FormVerse</a>
+    <a class="nav-item" href="/app/dashboard" data-page="dashboard"><span class="ic">▤</span>Dashboard</a>
+    <a class="nav-item" href="/app/forms" data-page="forms"><span class="ic">▦</span>My Forms</a>
+    <a class="nav-item" href="/app/builder" data-page="builder"><span class="ic">✎</span>Form Builder</a>
+    <a class="nav-item" href="/app/responses" data-page="responses"><span class="ic">▥</span>Responses</a>
+    <a class="nav-item" href="/app/analytics" data-page="analytics"><span class="ic">📈</span>Analytics</a>
+    <a class="nav-item" href="/app/settings" data-page="settings"><span class="ic">⚙</span>Settings</a>
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar">{{ user.initials }}</div>
+        <div><div style="font-weight:600;">{{ user.name }}</div><div style="color:var(--ink-soft);font-size:11.5px;">{{ user.email }}</div></div>
+      </div>
+      <form action="/logout" method="post"><button type="submit" class="nav-item" style="margin-top:4px;color:var(--red);border:none;background:none;width:100%;text-align:left;font:inherit;"><span class="ic">⏻</span>Log out</button></form>
+    </div>
+  </aside>
+  <div class="main">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+{% block scripts %}{% endblock %}
+</body>
+</html>

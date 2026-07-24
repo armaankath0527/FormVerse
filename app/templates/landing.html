@@ -1,0 +1,74 @@
+{% extends "base_public.html" %}
+{% block title %}FormVerse — Build forms like blueprints{% endblock %}
+{% block body %}
+<nav class="pub-nav">
+  <div class="brand"><span class="brand-mark"></span>FormVerse</div>
+  <div class="pub-nav-links">
+    <span>Product</span>
+    <span>Templates</span>
+    <span>Pricing</span>
+    <a href="/login" style="color:var(--ink);font-weight:600;">Log in</a>
+    <a class="btn btn-primary" href="/signup">Get started free</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">No-code form builder</div>
+      <h1>Draft forms<br>like a <em>blueprint</em>.</h1>
+      <p>FormVerse turns scattered questions into structured, shareable forms — drag fields onto the canvas, wire up logic, and watch responses land in real time.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/signup">Start building — free</a>
+        <a class="btn btn-outline" href="/login">See a live demo</a>
+      </div>
+      <div class="hero-note">No credit card &nbsp;·&nbsp; Unlimited drafts &nbsp;·&nbsp; Export anytime</div>
+    </div>
+    <div class="schematic">
+      <div class="schematic-head"><span>FV-014 // CUSTOMER INTAKE</span><span>rev. 3</span></div>
+      <div class="sfield short"><span class="tag">TXT</span><div class="line"></div></div>
+      <div class="sfield short"><span class="tag">MAIL</span><div class="line"></div></div>
+      <div class="sfield choice"><span class="tag">CHK</span><span class="dot"></span><div class="line" style="max-width:30%"></div><span class="dot"></span><div class="line" style="max-width:20%"></div></div>
+      <div class="sfield"><span class="tag">AREA</span><div class="line"></div></div>
+      <div class="sfield short"><span class="tag">DATE</span><div class="line"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-head">
+    <div class="eyebrow">Field library</div>
+    <h2>Every field a form needs</h2>
+    <p>Nineteen field types, fully customizable — required toggles, validation, help text, and character limits included.</p>
+  </div>
+  <div class="type-strip">
+    <span class="type-chip">Short text</span><span class="type-chip">Long text</span><span class="type-chip">Email</span>
+    <span class="type-chip">Number</span><span class="type-chip">Phone</span><span class="type-chip">Dropdown</span>
+    <span class="type-chip">Checkbox</span><span class="type-chip">Radio</span><span class="type-chip">Date</span>
+    <span class="type-chip">Time</span><span class="type-chip">File upload</span><span class="type-chip">URL</span>
+    <span class="type-chip">Rating</span><span class="type-chip">Multiple choice</span><span class="type-chip">Yes / No</span>
+    <span class="type-chip">Section divider</span><span class="type-chip">Heading</span><span class="type-chip">Paragraph</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-head">
+    <div class="eyebrow">Why teams pick FormVerse</div>
+    <h2>Built for the whole lifecycle</h2>
+    <p>From first draft to final report — one workspace for building, sharing, and reading your forms.</p>
+  </div>
+  <div class="grid-3">
+    <div class="card"><div class="feat-num">01</div><h3>Drag-and-drop builder</h3><p>Assemble fields visually with live preview — reorder, duplicate, or delete in a click.</p></div>
+    <div class="card"><div class="feat-num">02</div><h3>Real-time responses</h3><p>Submissions land instantly with auto-save, validation, and spam protection built in.</p></div>
+    <div class="card"><div class="feat-num">03</div><h3>Share anywhere</h3><p>A unique link, a QR code, or an embed snippet — publish once, collect everywhere.</p></div>
+    <div class="card"><div class="feat-num">04</div><h3>Analytics that matter</h3><p>Views, completion rate, and device breakdowns, visualized without extra setup.</p></div>
+    <div class="card"><div class="feat-num">05</div><h3>Branded themes</h3><p>Match colors, fonts, and logos to your brand — light or dark, your call.</p></div>
+    <div class="card"><div class="feat-num">06</div><h3>Export on demand</h3><p>Pull responses as CSV, Excel, or a formatted PDF whenever you need them.</p></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="brand" style="font-size:15px;"><span class="brand-mark" style="width:18px;height:18px;"></span>FormVerse</div>
+  <div>Frontend + backend connected — running on Flask</div>
+</div>
+{% endblock %}

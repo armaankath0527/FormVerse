@@ -1,0 +1,22 @@
+{% extends "base_public.html" %}
+{% block title %}Log in — FormVerse{% endblock %}
+{% block body %}
+<div class="auth-wrap">
+  <div class="auth-card">
+    <a href="/" class="brand" style="justify-content:center;"><span class="brand-mark"></span>FormVerse</a>
+    <div class="auth-sub">Log in to keep building</div>
+    {% if error %}<div class="err-banner" style="display:block;">{{ error }}</div>{% endif %}
+    <form method="post" action="/login">
+      <input type="hidden" name="next" value="{{ next or '' }}">
+      <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@company.com" value="{{ email or '' }}" required></div>
+      <div class="field"><label>Password</label><input type="password" name="password" placeholder="••••••••" required></div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:18px;">
+        <a href="/forgot-password" style="font-size:13px;color:var(--blue);font-weight:600;">Forgot password?</a>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Log in</button>
+    </form>
+    <div class="auth-foot">New to FormVerse? <a href="/signup">Create an account</a></div>
+    <div class="auth-foot" style="margin-top:6px;color:var(--ink-soft);">Demo account: demo@formverse.io / password123</div>
+  </div>
+</div>
+{% endblock %}

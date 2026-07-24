@@ -1,0 +1,39 @@
+{% extends "base_app.html" %}
+{% block title %}Settings — FormVerse{% endblock %}
+{% block content %}
+<div class="topbar"><h1>Settings</h1></div>
+<div class="content" style="max-width:640px;">
+  <div class="panel">
+    <div class="panel-head"><h3>Profile</h3></div>
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px;">
+      <div class="avatar" style="width:56px;height:56px;font-size:18px;">{{ user.initials }}</div>
+      <button class="btn btn-outline btn-sm" disabled title="Needs Cloudinary wired up on the backend">Upload avatar</button>
+    </div>
+    <div class="field"><label>Full name</label><input type="text" id="profile-name" value="{{ user.name }}"></div>
+    <div class="field"><label>Email</label><input type="email" value="{{ user.email }}" disabled title="Email changes aren't supported yet"></div>
+    <button class="btn btn-primary btn-sm" onclick="saveProfile()">Save changes</button>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Change password</h3></div>
+    <div class="field"><label>Current password</label><input type="password" id="current-password" placeholder="••••••••"></div>
+    <div class="field"><label>New password</label><input type="password" id="new-password" placeholder="••••••••" minlength="8"></div>
+    <button class="btn btn-outline btn-sm" onclick="changePassword()">Update password</button>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Appearance</h3></div>
+    <div class="toggle-row">Dark mode <div class="switch" id="dark-mode-switch" onclick="handleThemeToggle()"></div></div>
+    <div class="toggle-row">Email notifications <div class="switch on" onclick="this.classList.toggle('on')"></div></div>
+  </div>
+
+  <div class="panel" style="border-color:var(--red);">
+    <div class="panel-head"><h3 style="color:var(--red);">Delete account</h3></div>
+    <p style="font-size:13.5px;color:var(--ink-soft);margin:0 0 14px;">This permanently deletes your forms and responses. This can't be undone.</p>
+    <button class="btn btn-danger btn-sm" onclick="deleteAccount()">Delete my account</button>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

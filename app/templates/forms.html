@@ -1,0 +1,23 @@
+{% extends "base_app.html" %}
+{% block title %}My Forms — FormVerse{% endblock %}
+{% block content %}
+<div class="topbar"><h1>My Forms</h1><a class="btn btn-primary btn-sm" href="/app/builder">+ New form</a></div>
+<div class="content">
+  <div class="forms-toolbar">
+    <div class="search-box">🔍<input type="text" id="forms-search" placeholder="Search forms..." oninput="filterForms(this.value)"></div>
+    <select id="forms-sort" style="padding:9px 12px;border:1.5px solid var(--paper-line);border-radius:3px;font-size:13.5px;background:var(--white);" onchange="sortForms(this.value)">
+      <option value="recent">Sort: Most recent</option>
+      <option value="name">Sort: Name A–Z</option>
+      <option value="responses">Sort: Most responses</option>
+    </select>
+  </div>
+  <div class="grid-3" id="forms-grid">
+    <div class="card"><div class="skeleton" style="height:16px;width:70%;margin-bottom:10px;"></div><div class="skeleton" style="height:12px;width:40%;"></div></div>
+    <div class="card"><div class="skeleton" style="height:16px;width:70%;margin-bottom:10px;"></div><div class="skeleton" style="height:12px;width:40%;"></div></div>
+    <div class="card"><div class="skeleton" style="height:16px;width:70%;margin-bottom:10px;"></div><div class="skeleton" style="height:12px;width:40%;"></div></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/forms.js') }}"></script>
+{% endblock %}

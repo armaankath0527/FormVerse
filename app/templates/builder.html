@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem('formverse-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ 'Edit form' if form_id else 'New form' }} — FormVerse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+</head>
+<body>
+<div class="builder-topbar">
+  <div style="display:flex;align-items:center;gap:16px;">
+    <a class="btn btn-ghost btn-sm" href="/app/forms">← Back</a>
+    <div class="builder-tabs">
+      <button class="btab active" id="btab-build" onclick="setBuilderTab('build')">Build</button>
+      <button class="btab" id="btab-preview" onclick="setBuilderTab('preview')">Preview</button>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;">
+    <button class="btn btn-outline btn-sm" id="save-draft-btn" onclick="saveDraft()">Save draft</button>
+    <button class="btn btn-primary btn-sm" id="publish-btn" onclick="publishForm()">Publish</button>
+  </div>
+</div>
+<div class="builder">
+  <div class="palette builder-col">
+    <h4>Text</h4>
+    <div class="pal-item" draggable="true" data-type="short" ondragstart="dragStart(event)"><span class="tag">TXT</span>Short text</div>
+    <div class="pal-item" draggable="true" data-type="long" ondragstart="dragStart(event)"><span class="tag">AREA</span>Long text</div>
+    <div class="pal-item" draggable="true" data-type="email" ondragstart="dragStart(event)"><span class="tag">MAIL</span>Email</div>
+    <div class="pal-item" draggable="true" data-type="number" ondragstart="dragStart(event)"><span class="tag">NUM</span>Number</div>
+    <div class="pal-item" draggable="true" data-type="phone" ondragstart="dragStart(event)"><span class="tag">TEL</span>Phone number</div>
+    <div class="pal-item" draggable="true" data-type="url" ondragstart="dragStart(event)"><span class="tag">URL</span>URL</div>
+    <h4>Choice</h4>
+    <div class="pal-item" draggable="true" data-type="dropdown" ondragstart="dragStart(event)"><span class="tag">SEL</span>Dropdown</div>
+    <div class="pal-item" draggable="true" data-type="checkbox" ondragstart="dragStart(event)"><span class="tag">CHK</span>Checkbox</div>
+    <div class="pal-item" draggable="true" data-type="radio" ondragstart="dragStart(event)"><span class="tag">RAD</span>Radio button</div>
+    <div class="pal-item" draggable="true" data-type="multiple" ondragstart="dragStart(event)"><span class="tag">MUL</span>Multiple choice</div>
+    <div class="pal-item" draggable="true" data-type="yesno" ondragstart="dragStart(event)"><span class="tag">Y/N</span>Yes / No</div>
+    <h4>Other</h4>
+    <div class="pal-item" draggable="true" data-type="date" ondragstart="dragStart(event)"><span class="tag">DATE</span>Date picker</div>
+    <div class="pal-item" draggable="true" data-type="time" ondragstart="dragStart(event)"><span class="tag">TIME</span>Time picker</div>
+    <div class="pal-item" draggable="true" data-type="file" ondragstart="dragStart(event)"><span class="tag">FILE</span>File upload</div>
+    <div class="pal-item" draggable="true" data-type="rating" ondragstart="dragStart(event)"><span class="tag">★</span>Rating scale</div>
+    <h4>Layout</h4>
+    <div class="pal-item" draggable="true" data-type="heading" ondragstart="dragStart(event)"><span class="tag">H</span>Heading</div>
+    <div class="pal-item" draggable="true" data-type="paragraph" ondragstart="dragStart(event)"><span class="tag">¶</span>Paragraph</div>
+    <div class="pal-item" draggable="true" data-type="divider" ondragstart="dragStart(event)"><span class="tag">—</span>Section divider</div>
+  </div>
+
+  <div class="canvas-col builder-col">
+    <div class="canvas-inner">
+      <div class="canvas-title">
+        <input type="text" id="form-title-input" value="Untitled form" oninput="formMeta.title=this.value">
+        <textarea rows="1" id="form-desc-input" placeholder="Add a description for respondents..." oninput="formMeta.desc=this.value"></textarea>
+      </div>
+      <div class="dropzone" id="dropzone" ondragover="dragOver(event)" ondrop="dropField(event)" ondragleave="dragLeave(event)">
+        <div class="empty-hint" id="empty-hint">Drag a field here to start building →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inspector builder-col" id="inspector">
+    <h4>Field settings</h4>
+    <div class="empty" id="inspector-empty">Select a field on<br>the canvas to edit it</div>
+    <div id="inspector-body" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+  const EXISTING_FORM_ID = {{ form_id or 'null' }};
+</script>
+<script src="{{ url_for('static', filename='js/builder.js') }}"></script>
+</body>
+</html>

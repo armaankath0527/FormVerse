@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem('formverse-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form — FormVerse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<style>
+  .pf-wrap{max-width:600px;margin:0 auto;padding:48px 20px 80px;}
+  .pf-brand{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:15px;margin-bottom:28px;color:var(--ink-soft);}
+  .pf-card{background:var(--white);border:1.5px solid var(--ink);border-radius:8px;padding:30px;box-shadow:6px 6px 0 var(--blue-pale);}
+  .pf-card h1{font-family:var(--font-display);font-size:26px;margin:0 0 8px;}
+  .pf-card .pf-desc{color:var(--ink-soft);font-size:14.5px;margin-bottom:26px;}
+  .pf-field{margin-bottom:22px;}
+  .pf-field label{display:block;font-weight:600;font-size:14.5px;margin-bottom:6px;}
+  .pf-field .req{color:var(--red);}
+  .pf-field .pf-help{font-size:12.5px;color:var(--ink-soft);margin-top:5px;}
+  .pf-field input[type=text], .pf-field input[type=email], .pf-field input[type=number],
+  .pf-field input[type=tel], .pf-field input[type=url], .pf-field input[type=date],
+  .pf-field input[type=time], .pf-field input[type=file], .pf-field textarea, .pf-field select{
+    width:100%;padding:10px 12px;border:1.5px solid var(--paper-line);border-radius:3px;
+    font-family:inherit;font-size:14px;background:var(--paper);color:var(--ink);
+  }
+  .pf-field input:focus, .pf-field textarea:focus, .pf-field select:focus{border-color:var(--blue);background:var(--white);}
+  .pf-choice-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:14px;}
+  .pf-rating{display:flex;gap:6px;font-size:26px;cursor:pointer;}
+  .pf-rating span{opacity:.35;}
+  .pf-rating span.on{opacity:1;}
+  .pf-heading{font-family:var(--font-display);font-size:20px;font-weight:700;margin:26px 0 6px;}
+  .pf-paragraph{font-size:14px;color:var(--ink-soft);margin:0 0 18px;}
+  .pf-divider{border-top:1.5px dashed var(--paper-line);margin:22px 0;}
+  .pf-done{text-align:center;padding:50px 20px;}
+  .pf-done h2{font-family:var(--font-display);margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div class="pf-wrap">
+  <a href="/" class="pf-brand"><span class="brand-mark"></span>FormVerse</a>
+  <div class="pf-card" id="pf-card">
+    <div class="skeleton" style="height:26px;width:60%;margin-bottom:14px;"></div>
+    <div class="skeleton" style="height:14px;width:90%;margin-bottom:26px;"></div>
+    <div class="skeleton" style="height:40px;margin-bottom:16px;"></div>
+    <div class="skeleton" style="height:40px;margin-bottom:16px;"></div>
+  </div>
+</div>
+<script>const SHARE_SLUG = {{ slug|tojson }};</script>
+<script src="{{ url_for('static', filename='js/public_form.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base_app.html" %}
+{% block title %}Analytics — FormVerse{% endblock %}
+{% block content %}
+<div class="topbar"><h1>Analytics</h1><select id="analytics-form-select" style="padding:8px 12px;border:1.5px solid var(--paper-line);border-radius:3px;"></select></div>
+<div class="content">
+  <div class="stat-row" id="analytics-stat-row">
+    <div class="stat-card"><div class="label">Total views</div><div class="skeleton" style="height:30px;"></div></div>
+    <div class="stat-card"><div class="label">Total responses</div><div class="skeleton" style="height:30px;"></div></div>
+    <div class="stat-card"><div class="label">Submission rate</div><div class="skeleton" style="height:30px;"></div></div>
+    <div class="stat-card"><div class="label">Devices tracked</div><div class="skeleton" style="height:30px;"></div></div>
+  </div>
+  <div class="chart-grid">
+    <div class="panel"><div class="panel-head"><h3>Response trend</h3></div><div class="chart-box"><canvas id="chart-analytics-area"></canvas></div></div>
+    <div class="panel"><div class="panel-head"><h3>Device breakdown</h3></div><div class="chart-box"><canvas id="chart-analytics-donut"></canvas></div></div>
+  </div>
+  <div class="chart-grid-3">
+    <div class="panel"><div class="panel-head"><h3>Response volume</h3></div><div class="chart-box"><canvas id="chart-analytics-bar"></canvas></div></div>
+    <div class="panel"><div class="panel-head"><h3>Traffic source</h3></div><div class="chart-box"><canvas id="chart-analytics-pie"></canvas></div></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+{% endblock %}

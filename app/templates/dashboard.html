@@ -1,0 +1,31 @@
+{% extends "base_app.html" %}
+{% block title %}Dashboard — FormVerse{% endblock %}
+{% block content %}
+<div class="topbar"><h1>Dashboard</h1><a class="btn btn-primary btn-sm" href="/app/builder">+ New form</a></div>
+<div class="content">
+  <div class="stat-row" id="stat-row">
+    <div class="stat-card"><div class="label">Total forms</div><div class="skeleton" style="height:30px;width:50%;"></div></div>
+    <div class="stat-card"><div class="label">Total responses</div><div class="skeleton" style="height:30px;width:50%;"></div></div>
+    <div class="stat-card"><div class="label">Active forms</div><div class="skeleton" style="height:30px;width:50%;"></div></div>
+    <div class="stat-card"><div class="label">Draft forms</div><div class="skeleton" style="height:30px;width:50%;"></div></div>
+  </div>
+  <div class="chart-grid">
+    <div class="panel"><div class="panel-head"><h3>Responses — last 14 days</h3></div><div class="chart-box"><canvas id="chart-dash-line"></canvas></div></div>
+    <div class="panel"><div class="panel-head"><h3>Recent activity</h3></div>
+      <div style="font-size:13.5px;" id="activity-list">
+        <div class="skeleton" style="height:14px;margin-bottom:14px;"></div>
+        <div class="skeleton" style="height:14px;margin-bottom:14px;width:80%;"></div>
+        <div class="skeleton" style="height:14px;width:60%;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-head"><h3>Your forms</h3><a href="/app/forms" style="font-size:13px;color:var(--blue);font-weight:600;">View all →</a></div>
+    <table class="table"><thead><tr><th>Form</th><th>Status</th><th>Responses</th><th>Last edited</th></tr></thead>
+    <tbody id="dash-forms-body">{{ ''|safe }}</tbody></table>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

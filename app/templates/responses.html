@@ -1,0 +1,26 @@
+{% extends "base_app.html" %}
+{% block title %}Responses — FormVerse{% endblock %}
+{% block content %}
+<div class="topbar"><h1>Responses</h1>
+  <div style="display:flex;gap:8px;">
+    <select id="resp-form-select" style="padding:8px 12px;border:1.5px solid var(--paper-line);border-radius:3px;font-size:13.5px;" onchange="onFormChange()"></select>
+    <button class="btn btn-outline btn-sm" onclick="exportResponses('csv')">Export CSV</button>
+    <button class="btn btn-outline btn-sm" onclick="exportResponses('xlsx')">Export Excel</button>
+  </div>
+</div>
+<div class="content">
+  <div class="panel">
+    <div class="panel-head"><h3 id="resp-count-label">Loading…</h3>
+      <div class="search-box" style="max-width:260px;">🔍<input type="text" id="resp-search" placeholder="Search responses..." oninput="renderFilteredResponses()"></div>
+    </div>
+    <table class="table"><thead><tr><th><input type="checkbox" id="select-all" onchange="toggleSelectAll(this)"></th><th>Respondent</th><th>Submitted</th><th>Status</th><th>Device</th><th></th></tr></thead>
+    <tbody id="responses-body">{{ '' }}</tbody></table>
+    <div id="bulk-bar" style="display:none;margin-top:12px;">
+      <button class="btn btn-outline btn-sm" onclick="bulkDelete()" style="color:var(--red);border-color:var(--red);">Delete selected</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/responses.js') }}"></script>
+{% endblock %}
