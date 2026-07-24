@@ -1,42 +1,32 @@
 # FormVerse
 
-A full-stack **multi-page** web app — Flask serves both the pages and the API, so there's
-one server, one URL, and real browser navigation (every sidebar link and button is an actual
-page load with its own URL, not a JS view-toggle). SQLite (Python's built-in `sqlite3`) is
-the database — no separate database server to install.
+A modern, full-stack **drag-and-drop form builder** built with Flask and SQLite. Create beautiful forms, publish them, collect real-time responses, and view analytics — all in one clean interface.
 
-This replaces the earlier single-file HTML prototype: the frontend and backend are now one
-app, which also removes the "do these need to be in the same folder / running together"
-confusion — there's only one thing to run.
+### Live Demo
+**https://formverse-ld2p.onrender.com**
 
-## Setup
+Demo Login:  
+**Email:** `demo@formverse.io`  
+**Password:** `password123`
+
+### Features
+- Drag & Drop Form Builder with 18+ field types
+- Real-time Responses & Analytics Dashboard
+- Public shareable links + QR codes
+- Multi-page UI with Dark Mode
+- Fully responsive design
+
+### Tech Stack
+- **Backend**: Python + Flask
+- **Frontend**: HTML, CSS, JavaScript
+- **Database**: SQLite
+- **Charts**: Chart.js
+
+### Quick Start (Local)
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
+python -m venv venv
+source venv/bin/activate     # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
-
-## Seed demo data (recommended)
-
-```bash
 python seed.py
-```
-
-Creates a demo account with sample forms and responses already in place:
-
-```
-Email:    demo@formverse.io
-Password: password123
-```
-
-## Run it
-
-```bash
 python run.py
-```
-
-Open **http://127.0.0.1:5000** in your browser. That's it — one process, one port, pages and
-API both served from there.
-
-
